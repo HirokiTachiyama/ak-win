@@ -31,9 +31,11 @@
             this.LogFileSelectButton = new System.Windows.Forms.Button();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ログファイル選択ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ほげToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_SelectLogFormat = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Help = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Howtouse = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Version = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -126,36 +128,52 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.ほげToolStripMenuItem});
+            this.ToolStripMenuItem_Menu,
+            this.ToolStripMenuItem_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
+            // ToolStripMenuItem_Menu
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ログファイル選択ToolStripMenuItem});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(52, 20);
-            this.toolStripMenuItem1.Text = "メニュー";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.ToolStripMenuItem_Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_SelectLogFormat});
+            this.ToolStripMenuItem_Menu.Name = "ToolStripMenuItem_Menu";
+            this.ToolStripMenuItem_Menu.Size = new System.Drawing.Size(52, 20);
+            this.ToolStripMenuItem_Menu.Text = "メニュー";
+            this.ToolStripMenuItem_Menu.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // ログファイル選択ToolStripMenuItem
+            // ToolStripMenuItem_SelectLogFormat
             // 
-            this.ログファイル選択ToolStripMenuItem.Name = "ログファイル選択ToolStripMenuItem";
-            this.ログファイル選択ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ログファイル選択ToolStripMenuItem.Text = "ログフォーマット選択";
-            this.ログファイル選択ToolStripMenuItem.Click += new System.EventHandler(this.ログファイル選択ToolStripMenuItem_Click);
+            this.ToolStripMenuItem_SelectLogFormat.Name = "ToolStripMenuItem_SelectLogFormat";
+            this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(165, 22);
+            this.ToolStripMenuItem_SelectLogFormat.Text = "ログフォーマット選択";
+            this.ToolStripMenuItem_SelectLogFormat.Click += new System.EventHandler(this.ToolStripMenuItem_SelectLogFormat_Click);
             // 
-            // ほげToolStripMenuItem
+            // ToolStripMenuItem_Help
             // 
-            this.ほげToolStripMenuItem.Name = "ほげToolStripMenuItem";
-            this.ほげToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.ほげToolStripMenuItem.Text = "ヘルプ";
-            this.ほげToolStripMenuItem.Click += new System.EventHandler(this.ほげToolStripMenuItem_Click);
+            this.ToolStripMenuItem_Help.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_Howtouse,
+            this.ToolStripMenuItem_Version});
+            this.ToolStripMenuItem_Help.Name = "ToolStripMenuItem_Help";
+            this.ToolStripMenuItem_Help.Size = new System.Drawing.Size(48, 20);
+            this.ToolStripMenuItem_Help.Text = "ヘルプ";
+            // 
+            // ToolStripMenuItem_Howtouse
+            // 
+            this.ToolStripMenuItem_Howtouse.Name = "ToolStripMenuItem_Howtouse";
+            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Howtouse.Text = "How To Use";
+            this.ToolStripMenuItem_Howtouse.Click += new System.EventHandler(this.ToolStripMenuItem_Howtouse_Click);
+            // 
+            // ToolStripMenuItem_Version
+            // 
+            this.ToolStripMenuItem_Version.Name = "ToolStripMenuItem_Version";
+            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Version.Text = "Version";
+            this.ToolStripMenuItem_Version.Click += new System.EventHandler(this.ToolStripMenuItem_Version_Click);
             // 
             // statusStrip1
             // 
@@ -283,15 +301,17 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ログファイル選択ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ほげToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Menu;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SelectLogFormat;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Help;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage LogViewerTab;
         private System.Windows.Forms.TabPage DevTodoTab;
         private System.Windows.Forms.TabPage KifuTab;
         private System.Windows.Forms.Button todoSaveButton;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Howtouse;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Version;
     }
 }
 

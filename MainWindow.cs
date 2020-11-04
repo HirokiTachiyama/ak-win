@@ -12,8 +12,9 @@ using System.Windows.Forms;
 namespace ak_win {
     public partial class MainWindow : Form {
 
-        private string logFile;
-        private string logViewerStatus;
+        private string logViewer_logFile;
+        private string logViewer_formatFile;
+        private string logViewer_Status;
 
 
         public MainWindow() {
@@ -55,7 +56,7 @@ namespace ak_win {
         }
 
         private void LogReadButton_Click(object sender, EventArgs e) {
-            ShowLog(logFile);
+            ShowLog(logViewer_logFile);
         }
 
         private void LogFileSelectButton_Click(object sender, EventArgs e) {
@@ -65,7 +66,7 @@ namespace ak_win {
             };
 
             if (ofd.ShowDialog() == DialogResult.OK) {
-                LogFilePathLabel.Text = logFile = ofd.FileName;
+                LogFilePathLabel.Text = logViewer_logFile = ofd.FileName;
             }
 
         }
@@ -91,8 +92,23 @@ namespace ak_win {
 
         }
 
-        private void ログファイル選択ToolStripMenuItem_Click(object sender, EventArgs e) {
-            Console.WriteLine("clicked clicked");
+        private void ToolStripMenuItem_SelectLogFormat_Click(object sender, EventArgs e) {
+            Console.WriteLine("ToolStripMenuItem_SelectLogFormat clicked");
+            var ofd = new OpenFileDialog {
+                Title = "Select Log Format File",
+                InitialDirectory = @".\"
+            };
+            if (ofd.ShowDialog() == DialogResult.OK) {
+                LogFilePathLabel.Text = logViewer_formatFile = ofd.FileName;
+            }
+        }
+
+        private void ToolStripMenuItem_Howtouse_Click(object sender, EventArgs e) {
+            Console.WriteLine("How to use clicked");
+        }
+
+        private void ToolStripMenuItem_Version_Click(object sender, EventArgs e) {
+            Console.WriteLine("Version clicked");
         }
     }
 }
