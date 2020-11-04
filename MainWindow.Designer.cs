@@ -1,4 +1,6 @@
-﻿namespace ak_win {
+﻿using System.Windows.Forms;
+
+namespace ak_win {
     partial class MainWindow {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -37,16 +39,16 @@
             this.ToolStripMenuItem_Howtouse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Version = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ToolStripStatusLabel_AK = new System.Windows.Forms.ToolStripStatusLabel();
+            this.TabControl_AK = new System.Windows.Forms.TabControl();
             this.LogViewerTab = new System.Windows.Forms.TabPage();
             this.KifuTab = new System.Windows.Forms.TabPage();
             this.DevTodoTab = new System.Windows.Forms.TabPage();
-            this.todoSaveButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.devTodoSaveButton = new System.Windows.Forms.Button();
+            this.devTodoTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.TabControl_AK.SuspendLayout();
             this.LogViewerTab.SuspendLayout();
             this.DevTodoTab.SuspendLayout();
             this.SuspendLayout();
@@ -62,12 +64,12 @@
             this.logListBox.Name = "logListBox";
             this.logListBox.Size = new System.Drawing.Size(792, 340);
             this.logListBox.TabIndex = 0;
-            this.logListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.logListBox.SelectedIndexChanged += new System.EventHandler(this.logListBox_SelectedIndexChanged);
             // 
             // Radio_LogKind_FormPDFMaker
             // 
             this.Radio_LogKind_FormPDFMaker.AutoSize = true;
-            this.Radio_LogKind_FormPDFMaker.Location = new System.Drawing.Point(349, 6);
+            this.Radio_LogKind_FormPDFMaker.Location = new System.Drawing.Point(349, 9);
             this.Radio_LogKind_FormPDFMaker.Name = "Radio_LogKind_FormPDFMaker";
             this.Radio_LogKind_FormPDFMaker.Size = new System.Drawing.Size(119, 16);
             this.Radio_LogKind_FormPDFMaker.TabIndex = 1;
@@ -150,7 +152,7 @@
             this.ToolStripMenuItem_SelectLogFormat.Name = "ToolStripMenuItem_SelectLogFormat";
             this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(165, 22);
             this.ToolStripMenuItem_SelectLogFormat.Text = "ログフォーマット選択";
-            this.ToolStripMenuItem_SelectLogFormat.Click += new System.EventHandler(this.ToolStripMenuItem_SelectLogFormat_Click);
+            this.ToolStripMenuItem_SelectLogFormat.Click += new System.EventHandler(this.ToolStripMenuItem_SelectLogFormat_Clicked);
             // 
             // ToolStripMenuItem_Help
             // 
@@ -164,47 +166,48 @@
             // ToolStripMenuItem_Howtouse
             // 
             this.ToolStripMenuItem_Howtouse.Name = "ToolStripMenuItem_Howtouse";
-            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(136, 22);
             this.ToolStripMenuItem_Howtouse.Text = "How To Use";
-            this.ToolStripMenuItem_Howtouse.Click += new System.EventHandler(this.ToolStripMenuItem_Howtouse_Click);
+            this.ToolStripMenuItem_Howtouse.Click += new System.EventHandler(this.ToolStripMenuItem_Howtouse_Clicked);
             // 
             // ToolStripMenuItem_Version
             // 
             this.ToolStripMenuItem_Version.Name = "ToolStripMenuItem_Version";
-            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(136, 22);
             this.ToolStripMenuItem_Version.Text = "Version";
-            this.ToolStripMenuItem_Version.Click += new System.EventHandler(this.ToolStripMenuItem_Version_Click);
+            this.ToolStripMenuItem_Version.Click += new System.EventHandler(this.ToolStripMenuItem_Version_Clicked);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.ToolStripStatusLabel_AK});
             this.statusStrip1.Location = new System.Drawing.Point(0, 428);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel
+            // ToolStripStatusLabel_AK
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(38, 17);
-            this.toolStripStatusLabel.Text = "status";
-            this.toolStripStatusLabel.Click += new System.EventHandler(this.toolStripStatusLabel_Click);
+            this.ToolStripStatusLabel_AK.Name = "ToolStripStatusLabel_AK";
+            this.ToolStripStatusLabel_AK.Size = new System.Drawing.Size(38, 17);
+            this.ToolStripStatusLabel_AK.Text = "status";
+            this.ToolStripStatusLabel_AK.Click += new System.EventHandler(this.toolStripStatusLabel_Click);
             // 
-            // tabControl1
+            // TabControl_AK
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.TabControl_AK.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.LogViewerTab);
-            this.tabControl1.Controls.Add(this.KifuTab);
-            this.tabControl1.Controls.Add(this.DevTodoTab);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 398);
-            this.tabControl1.TabIndex = 9;
+            this.TabControl_AK.Controls.Add(this.LogViewerTab);
+            this.TabControl_AK.Controls.Add(this.KifuTab);
+            this.TabControl_AK.Controls.Add(this.DevTodoTab);
+            this.TabControl_AK.Location = new System.Drawing.Point(0, 27);
+            this.TabControl_AK.Name = "TabControl_AK";
+            this.TabControl_AK.SelectedIndex = 0;
+            this.TabControl_AK.Size = new System.Drawing.Size(800, 398);
+            this.TabControl_AK.TabIndex = 9;
+            this.TabControl_AK.SelectedIndexChanged += new System.EventHandler(this.TabControl_AK_Selected);
             // 
             // LogViewerTab
             // 
@@ -222,7 +225,7 @@
             this.LogViewerTab.TabIndex = 0;
             this.LogViewerTab.Text = "LogViewer";
             this.LogViewerTab.UseVisualStyleBackColor = true;
-            this.LogViewerTab.Click += new System.EventHandler(this.LogViewerTab_Click);
+            this.LogViewerTab.Click += new System.EventHandler(this.LogViewerTab_Area_Clicked);
             // 
             // KifuTab
             // 
@@ -233,11 +236,12 @@
             this.KifuTab.TabIndex = 2;
             this.KifuTab.Text = "Kifu";
             this.KifuTab.UseVisualStyleBackColor = true;
+            this.KifuTab.Click += new System.EventHandler(this.KifuTab_Area_Clicked);
             // 
             // DevTodoTab
             // 
-            this.DevTodoTab.Controls.Add(this.todoSaveButton);
-            this.DevTodoTab.Controls.Add(this.textBox1);
+            this.DevTodoTab.Controls.Add(this.devTodoSaveButton);
+            this.DevTodoTab.Controls.Add(this.devTodoTextBox);
             this.DevTodoTab.Location = new System.Drawing.Point(4, 22);
             this.DevTodoTab.Name = "DevTodoTab";
             this.DevTodoTab.Padding = new System.Windows.Forms.Padding(3);
@@ -245,31 +249,33 @@
             this.DevTodoTab.TabIndex = 1;
             this.DevTodoTab.Text = "DevTodo";
             this.DevTodoTab.UseVisualStyleBackColor = true;
+            this.DevTodoTab.Click += new System.EventHandler(this.DevTodoTab_Area_Clicked);
             // 
-            // todoSaveButton
+            // devTodoSaveButton
             // 
-            this.todoSaveButton.Location = new System.Drawing.Point(422, 282);
-            this.todoSaveButton.Name = "todoSaveButton";
-            this.todoSaveButton.Size = new System.Drawing.Size(75, 23);
-            this.todoSaveButton.TabIndex = 1;
-            this.todoSaveButton.Text = "Save";
-            this.todoSaveButton.UseVisualStyleBackColor = true;
-            this.todoSaveButton.Click += new System.EventHandler(this.todoSaveButton_Click);
+            this.devTodoSaveButton.Location = new System.Drawing.Point(422, 282);
+            this.devTodoSaveButton.Name = "devTodoSaveButton";
+            this.devTodoSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.devTodoSaveButton.TabIndex = 1;
+            this.devTodoSaveButton.Text = "Save";
+            this.devTodoSaveButton.UseVisualStyleBackColor = true;
+            this.devTodoSaveButton.Click += new System.EventHandler(this.devTodoSaveButton_Clicked);
             // 
-            // textBox1
+            // devTodoTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 6);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 248);
-            this.textBox1.TabIndex = 0;
+            this.devTodoTextBox.Location = new System.Drawing.Point(8, 6);
+            this.devTodoTextBox.Multiline = true;
+            this.devTodoTextBox.Name = "devTodoTextBox";
+            this.devTodoTextBox.Size = new System.Drawing.Size(453, 248);
+            this.devTodoTextBox.TabIndex = 0;
+            this.devTodoTextBox.TextChanged += new System.EventHandler(this.devTodoTextBox_TextChanged);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabControl_AK);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -279,7 +285,7 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.TabControl_AK.ResumeLayout(false);
             this.LogViewerTab.ResumeLayout(false);
             this.LogViewerTab.PerformLayout();
             this.DevTodoTab.ResumeLayout(false);
@@ -300,16 +306,16 @@
         private System.Windows.Forms.Label LogFilePathLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabel_AK;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Menu;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_SelectLogFormat;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Help;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl TabControl_AK;
         private System.Windows.Forms.TabPage LogViewerTab;
         private System.Windows.Forms.TabPage DevTodoTab;
         private System.Windows.Forms.TabPage KifuTab;
-        private System.Windows.Forms.Button todoSaveButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button devTodoSaveButton;
+        private System.Windows.Forms.TextBox devTodoTextBox;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Howtouse;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Version;
     }
