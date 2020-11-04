@@ -22,6 +22,7 @@ namespace ak_win {
 
         // Todo 関連変数
         private string devTodo_status = "DevTodo";
+        private string devTodo_file = "../../todo.txt";
 
 
 
@@ -32,8 +33,11 @@ namespace ak_win {
             Radio_LogKind_FormPDFMaker.Checked = true;
 
             // DevTodoのテキスト読み込み
-            devTodoTextBox.Text = File.ReadAllText("../../todo.txt");
-            devTodo_status = "Read ../../todo.txt";
+            devTodoTextBox.Text = File.ReadAllText(devTodo_file);
+            devTodo_status = $"{devTodo_file} loaded.";
+
+            // Timer_AK 始動
+            this.Timer_AK.Start();
 
             // ログの表示
             ShowLog("../../logs/FormPDFMaker_Excel.log");
@@ -184,12 +188,25 @@ namespace ak_win {
             UpdateStatusLabel();
         }
 
-        private void devTodoSaveButton_Clicked(object sender, EventArgs e) {
-            File.WriteAllText("../../todo.txt", devTodoTextBox.Text);
-            devTodo_status = "../../todo.txt saved.";
+
+        private void Timer_AK_Tick(object sender, EventArgs e) {
+            Timer_AK_Label.Text = DateTime.UtcNow.ToString();
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+            Console.WriteLine("hogefuga");
+        }
+
+        private void devTodoLoadButton_Click(object sender, EventArgs e) {
+            devTodoTextBox.Text = File.ReadAllText(devTodo_file);
+            devTodo_status = $"{devTodo_file} loaded.";
             UpdateStatusLabel();
         }
 
-
+        private void devTodoSaveButton_Clicked(object sender, EventArgs e) {
+            File.WriteAllText(devTodo_file, devTodoTextBox.Text);
+            devTodo_status = $"{devTodo_file} saved.";
+            UpdateStatusLabel();
+        }
     }
 }

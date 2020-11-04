@@ -25,6 +25,7 @@ namespace ak_win {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.logListBox = new System.Windows.Forms.ListBox();
             this.Radio_LogKind_FormPDFMaker = new System.Windows.Forms.RadioButton();
             this.Radio_LogKind_SkyPDFAddIn = new System.Windows.Forms.RadioButton();
@@ -46,6 +47,9 @@ namespace ak_win {
             this.DevTodoTab = new System.Windows.Forms.TabPage();
             this.devTodoSaveButton = new System.Windows.Forms.Button();
             this.devTodoTextBox = new System.Windows.Forms.TextBox();
+            this.Timer_AK = new System.Windows.Forms.Timer(this.components);
+            this.Timer_AK_Label = new System.Windows.Forms.Label();
+            this.devTodoLoadButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.TabControl_AK.SuspendLayout();
@@ -143,14 +147,14 @@ namespace ak_win {
             this.ToolStripMenuItem_Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_SelectLogFormat});
             this.ToolStripMenuItem_Menu.Name = "ToolStripMenuItem_Menu";
-            this.ToolStripMenuItem_Menu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItem_Menu.Text = "メニュー";
+            this.ToolStripMenuItem_Menu.Size = new System.Drawing.Size(50, 20);
+            this.ToolStripMenuItem_Menu.Text = "Menu";
             this.ToolStripMenuItem_Menu.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // ToolStripMenuItem_SelectLogFormat
             // 
             this.ToolStripMenuItem_SelectLogFormat.Name = "ToolStripMenuItem_SelectLogFormat";
-            this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(165, 22);
+            this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_SelectLogFormat.Text = "ログフォーマット選択";
             this.ToolStripMenuItem_SelectLogFormat.Click += new System.EventHandler(this.ToolStripMenuItem_SelectLogFormat_Clicked);
             // 
@@ -160,20 +164,20 @@ namespace ak_win {
             this.ToolStripMenuItem_Howtouse,
             this.ToolStripMenuItem_Version});
             this.ToolStripMenuItem_Help.Name = "ToolStripMenuItem_Help";
-            this.ToolStripMenuItem_Help.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItem_Help.Text = "ヘルプ";
+            this.ToolStripMenuItem_Help.Size = new System.Drawing.Size(44, 20);
+            this.ToolStripMenuItem_Help.Text = "Help";
             // 
             // ToolStripMenuItem_Howtouse
             // 
             this.ToolStripMenuItem_Howtouse.Name = "ToolStripMenuItem_Howtouse";
-            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(136, 22);
+            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Howtouse.Text = "How To Use";
             this.ToolStripMenuItem_Howtouse.Click += new System.EventHandler(this.ToolStripMenuItem_Howtouse_Clicked);
             // 
             // ToolStripMenuItem_Version
             // 
             this.ToolStripMenuItem_Version.Name = "ToolStripMenuItem_Version";
-            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(136, 22);
+            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItem_Version.Text = "Version";
             this.ToolStripMenuItem_Version.Click += new System.EventHandler(this.ToolStripMenuItem_Version_Clicked);
             // 
@@ -186,6 +190,7 @@ namespace ak_win {
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
             // 
             // ToolStripStatusLabel_AK
             // 
@@ -240,6 +245,7 @@ namespace ak_win {
             // 
             // DevTodoTab
             // 
+            this.DevTodoTab.Controls.Add(this.devTodoLoadButton);
             this.DevTodoTab.Controls.Add(this.devTodoSaveButton);
             this.DevTodoTab.Controls.Add(this.devTodoTextBox);
             this.DevTodoTab.Location = new System.Drawing.Point(4, 22);
@@ -253,7 +259,7 @@ namespace ak_win {
             // 
             // devTodoSaveButton
             // 
-            this.devTodoSaveButton.Location = new System.Drawing.Point(422, 282);
+            this.devTodoSaveButton.Location = new System.Drawing.Point(423, 281);
             this.devTodoSaveButton.Name = "devTodoSaveButton";
             this.devTodoSaveButton.Size = new System.Drawing.Size(75, 23);
             this.devTodoSaveButton.TabIndex = 1;
@@ -266,15 +272,39 @@ namespace ak_win {
             this.devTodoTextBox.Location = new System.Drawing.Point(8, 6);
             this.devTodoTextBox.Multiline = true;
             this.devTodoTextBox.Name = "devTodoTextBox";
-            this.devTodoTextBox.Size = new System.Drawing.Size(453, 248);
+            this.devTodoTextBox.Size = new System.Drawing.Size(490, 257);
             this.devTodoTextBox.TabIndex = 0;
             this.devTodoTextBox.TextChanged += new System.EventHandler(this.devTodoTextBox_TextChanged);
+            // 
+            // Timer_AK
+            // 
+            this.Timer_AK.Tick += new System.EventHandler(this.Timer_AK_Tick);
+            // 
+            // Timer_AK_Label
+            // 
+            this.Timer_AK_Label.AutoSize = true;
+            this.Timer_AK_Label.Location = new System.Drawing.Point(692, 12);
+            this.Timer_AK_Label.Name = "Timer_AK_Label";
+            this.Timer_AK_Label.Size = new System.Drawing.Size(45, 12);
+            this.Timer_AK_Label.TabIndex = 10;
+            this.Timer_AK_Label.Text = "00:00:00";
+            // 
+            // devTodoLoadButton
+            // 
+            this.devTodoLoadButton.Location = new System.Drawing.Point(332, 281);
+            this.devTodoLoadButton.Name = "devTodoLoadButton";
+            this.devTodoLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.devTodoLoadButton.TabIndex = 2;
+            this.devTodoLoadButton.Text = "Load";
+            this.devTodoLoadButton.UseVisualStyleBackColor = true;
+            this.devTodoLoadButton.Click += new System.EventHandler(this.devTodoLoadButton_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Timer_AK_Label);
             this.Controls.Add(this.TabControl_AK);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -318,6 +348,9 @@ namespace ak_win {
         private System.Windows.Forms.TextBox devTodoTextBox;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Howtouse;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Version;
+        private Timer Timer_AK;
+        private Label Timer_AK_Label;
+        private Button devTodoLoadButton;
     }
 }
 
