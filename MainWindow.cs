@@ -14,7 +14,9 @@ namespace ak_win {
     public partial class MainWindow : Form {
 
         private string configFile = "../../config.json";
+        private Config conf;
 
+        DokuwikiPageManager dpm;
 
         // LogViewer 関連変数
         private string logViewer_logFile;
@@ -26,18 +28,22 @@ namespace ak_win {
 
         // Todo 関連変数
         private string devTodo_status = "DevTodo";
-        private string devTodo_file = "../../todo.txt";
-
 
         public MainWindow() {
             InitializeComponent();
+
+            // Config読み込み
+            string configFileStr = File.ReadAllText(configFile);
+            conf = JsonConvert.DeserializeObject<Config>(configFileStr);
+
+            dpm = new DokuwikiPageManager(conf.url, conf.user, conf.pass);
 
             // デフォルトでチェックしておく
             Radio_LogKind_FormPDFMaker.Checked = true;
 
             // DevTodoのテキスト読み込み
-            devTodoTextBox.Text = File.ReadAllText(devTodo_file);
-            devTodo_status = $"{devTodo_file} loaded.";
+            devTodoTextBox.Text = dpm.GetPage(conf.page);
+            devTodo_status = $"{conf.url}{conf.page} loaded.";
 
             // Timer_AK 始動
             this.Timer_AK.Start();
@@ -203,23 +209,26 @@ namespace ak_win {
         private void devTodoLoadButton_Click(object sender, EventArgs e) {
             //devTodoTextBox.Text = File.ReadAllText(devTodo_file);
 
-            string configFileStr = File.ReadAllText(configFile);
-
-            Config conf = JsonConvert.DeserializeObject<Config>(configFileStr);
-            string url = conf.url;
-            string user = conf.user;
-            string pass = conf.pass;
-            string page = conf.page;
-
-            devTodoTextBox.Text =
-                new DokuwikiPageGetter(url, user, pass).GetPageFromDW(page);
-            devTodo_status = $"{url}{page} loaded.";
+            devTodoTextBox.Text = dpm.GetPage(conf.page);
+            devTodo_status = $"{conf.url}{conf.page} loaded.";
             UpdateStatusLabel();
         }
 
         private void devTodoSaveButton_Clicked(object sender, EventArgs e) {
-            File.WriteAllText(devTodo_file, devTodoTextBox.Text);
-            devTodo_status = $"{devTodo_file} saved.";
+            //File.WriteAllText(devTodo_file, devTodoTextBox.Text);
+            //devTodo_status = $"{devTodo_file} saved.";
+
+
+            bool ret = dpm.PutPage(devTodoTextBox.Text, conf.page);
+
+            if (ret)
+            {
+                Console.WriteLine("put success.");
+                devTodo_status = "put success.";
+            } else
+            {
+                devTodo_status = "put failed.";
+            }
             UpdateStatusLabel();
         }
     }

@@ -12,10 +12,12 @@ using stDokuWiki.Data;
 // https://github.com/PetersSharp/stCoCServer/tree/master/stCoCServer/stExtLib/stDokuWikiConnector-dll/Doc
 
 namespace ak_win {
-    class DokuwikiPageGetter {
+    class DokuwikiPageManager
+    {
 
         RpcXml rpcXml;
-        public DokuwikiPageGetter(string url, string user, string pass) {
+        public DokuwikiPageManager(string url, string user, string pass)
+        {
 
             rpcXml = new RpcXml(url, user, pass);
 
@@ -31,11 +33,24 @@ namespace ak_win {
 
         }
 
-        public string GetPageFromDW(string _pageName)
+        public string GetPage(string _pageName)
         {
             return rpcXml.DokuPageGet(_pageName);
         }
 
-
+        public bool PutPage(string _contentStr, string _pageName)
+        {
+            bool ret = false;
+            try
+            {
+                ret = rpcXml.DokuPagePut(_pageName, _contentStr);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return ret;
+        }
     }
 }
