@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ using System.Windows.Forms;
 namespace ak_win {
     public partial class MainWindow : Form {
 
+        private string configFile = "../../config.json";
+
+
         // LogViewer 関連変数
         private string logViewer_logFile;
         private string logViewer_formatFile;
@@ -23,7 +27,6 @@ namespace ak_win {
         // Todo 関連変数
         private string devTodo_status = "DevTodo";
         private string devTodo_file = "../../todo.txt";
-
 
 
         public MainWindow() {
@@ -198,8 +201,19 @@ namespace ak_win {
         }
 
         private void devTodoLoadButton_Click(object sender, EventArgs e) {
-            devTodoTextBox.Text = File.ReadAllText(devTodo_file);
-            devTodo_status = $"{devTodo_file} loaded.";
+            //devTodoTextBox.Text = File.ReadAllText(devTodo_file);
+
+            string configFileStr = File.ReadAllText(configFile);
+
+            Config conf = JsonConvert.DeserializeObject<Config>(configFileStr);
+            string url = conf.url;
+            string user = conf.user;
+            string pass = conf.pass;
+            string page = conf.page;
+
+            devTodoTextBox.Text =
+                new DokuwikiPageGetter(url, user, pass).GetPageFromDW(page);
+            devTodo_status = $"{url}{page} loaded.";
             UpdateStatusLabel();
         }
 
