@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Redmine.Net.Api;
+using Redmine.Net.Api.Types;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -36,20 +39,20 @@ namespace ak_win {
             InitializeComponent();
 
             // Config読み込み
-            string configFileStr = File.ReadAllText(configFile);
+            string configFileStr = System.IO.File.ReadAllText(configFile);
             conf = JsonConvert.DeserializeObject<Config>(configFileStr);
 
             // デフォルトでチェックしておく
             Radio_LogKind_FormPDFMaker.Checked = true;
 
             // DokuWikiへのログイン
-            dpm = new DokuwikiPageManager(conf.url, conf.user, conf.pass);
-            devtodoUrlLabel.Text = "URL : " + conf.url + conf.todoPage;
-            devtodoUserPassLabel.Text = "User : " + conf.user + ", Pass : ************";
+            dpm = new DokuwikiPageManager(conf.todoUrl, conf.todoUser, conf.todoPass);
+            devtodoUrlLabel.Text = "URL : " + conf.todoUrl + conf.todoPage;
+            devtodoUserPassLabel.Text = "User : " + conf.todoUser + ", Pass : ************";
 
             // DevTodoのテキスト読み込み
             devTodoTextBox.Text = dpm.GetPageStr(conf.todoPage);
-            devTodo_status = $"{conf.url}{conf.todoPage} loaded.";
+            devTodo_status = $"{conf.todoUrl}{conf.todoPage} loaded.";
 
             // Timer_AK 始動
             this.Timer_AK.Start();
@@ -62,7 +65,7 @@ namespace ak_win {
         private void ShowLog(String _fileName) {
             // クリア
             logListBox.Items.Clear();
-            string[] logs = File.ReadAllLines(_fileName);
+            string[] logs = System.IO.File.ReadAllLines(_fileName);
 
             foreach (string log in logs) {
                 var item = new ListViewItem();
@@ -173,6 +176,13 @@ namespace ak_win {
 
         private void RedmineTab_Selected() {
             Console.WriteLine("Redmine");
+
+            var rm = new RedmineManager(conf.redmineUrl, conf.redmineApiKey);
+            var param = new NameValueCollection { { "status_id", "*" } };
+
+            var issue = rm.GetObject<Issue>("18481", param);
+            RedmineTextBox.Text = issue.ToString();
+
             UpdateStatusLabel();
         }
 
@@ -229,7 +239,7 @@ namespace ak_win {
             //devTodoTextBox.Text = File.ReadAllText(devTodo_file);
             // Dokuwikiから取得
             devTodoTextBox.Text = dpm.GetPageStr(conf.todoPage);
-            devTodo_status = $"{conf.url}{conf.todoPage} loaded.";
+            devTodo_status = $"{conf.todoUrl}{conf.todoPage} loaded.";
             UpdateStatusLabel();
         }
 

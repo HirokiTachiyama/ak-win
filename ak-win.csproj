@@ -36,11 +36,16 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="redmine-net-api, Version=4.2.0.0, Culture=neutral, PublicKeyToken=d31653dca0020f25, processorArchitecture=MSIL">
+      <HintPath>packages\redmine-api.4.2.0\lib\net472\redmine-net-api.dll</HintPath>
+    </Reference>
     <Reference Include="stDokuWikiConnector, Version=1.0.1.29425, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\stDokuWikiConnector.1.0.1.29425\lib\net40\stDokuWikiConnector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

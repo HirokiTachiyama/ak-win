@@ -45,19 +45,22 @@ namespace ak_win {
             this.LogViewerTab = new System.Windows.Forms.TabPage();
             this.KifuTab = new System.Windows.Forms.TabPage();
             this.DevTodoTab = new System.Windows.Forms.TabPage();
+            this.devtodoUserPassLabel = new System.Windows.Forms.Label();
+            this.devtodoUrlLabel = new System.Windows.Forms.Label();
             this.devTodoLoadButton = new System.Windows.Forms.Button();
             this.devTodoSaveButton = new System.Windows.Forms.Button();
             this.devTodoTextBox = new System.Windows.Forms.TextBox();
+            this.RedmineTab = new System.Windows.Forms.TabPage();
             this.Timer_AK = new System.Windows.Forms.Timer(this.components);
             this.Timer_AK_Label = new System.Windows.Forms.Label();
-            this.RedmineTab = new System.Windows.Forms.TabPage();
-            this.devtodoUrlLabel = new System.Windows.Forms.Label();
-            this.devtodoUserPassLabel = new System.Windows.Forms.Label();
+            this.RedmineLabel = new System.Windows.Forms.Label();
+            this.RedmineTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.TabControl_AK.SuspendLayout();
             this.LogViewerTab.SuspendLayout();
             this.DevTodoTab.SuspendLayout();
+            this.RedmineTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // logListBox
@@ -263,6 +266,24 @@ namespace ak_win {
             this.DevTodoTab.UseVisualStyleBackColor = true;
             this.DevTodoTab.Click += new System.EventHandler(this.DevTodoTab_Area_Clicked);
             // 
+            // devtodoUserPassLabel
+            // 
+            this.devtodoUserPassLabel.AutoSize = true;
+            this.devtodoUserPassLabel.Location = new System.Drawing.Point(9, 293);
+            this.devtodoUserPassLabel.Name = "devtodoUserPassLabel";
+            this.devtodoUserPassLabel.Size = new System.Drawing.Size(51, 12);
+            this.devtodoUserPassLabel.TabIndex = 4;
+            this.devtodoUserPassLabel.Text = "userpass";
+            // 
+            // devtodoUrlLabel
+            // 
+            this.devtodoUrlLabel.AutoSize = true;
+            this.devtodoUrlLabel.Location = new System.Drawing.Point(9, 270);
+            this.devtodoUrlLabel.Name = "devtodoUrlLabel";
+            this.devtodoUrlLabel.Size = new System.Drawing.Size(27, 12);
+            this.devtodoUrlLabel.TabIndex = 3;
+            this.devtodoUrlLabel.Text = "URL";
+            // 
             // devTodoLoadButton
             // 
             this.devTodoLoadButton.Location = new System.Drawing.Point(504, 6);
@@ -292,6 +313,18 @@ namespace ak_win {
             this.devTodoTextBox.TabIndex = 0;
             this.devTodoTextBox.TextChanged += new System.EventHandler(this.devTodoTextBox_TextChanged);
             // 
+            // RedmineTab
+            // 
+            this.RedmineTab.Controls.Add(this.RedmineTextBox);
+            this.RedmineTab.Controls.Add(this.RedmineLabel);
+            this.RedmineTab.Location = new System.Drawing.Point(4, 22);
+            this.RedmineTab.Name = "RedmineTab";
+            this.RedmineTab.Padding = new System.Windows.Forms.Padding(3);
+            this.RedmineTab.Size = new System.Drawing.Size(792, 372);
+            this.RedmineTab.TabIndex = 3;
+            this.RedmineTab.Text = "Redmine";
+            this.RedmineTab.UseVisualStyleBackColor = true;
+            // 
             // Timer_AK
             // 
             this.Timer_AK.Tick += new System.EventHandler(this.Timer_AK_Tick);
@@ -305,33 +338,22 @@ namespace ak_win {
             this.Timer_AK_Label.TabIndex = 10;
             this.Timer_AK_Label.Text = "00:00:00";
             // 
-            // RedmineTab
+            // RedmineLabel
             // 
-            this.RedmineTab.Location = new System.Drawing.Point(4, 22);
-            this.RedmineTab.Name = "RedmineTab";
-            this.RedmineTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RedmineTab.Size = new System.Drawing.Size(792, 372);
-            this.RedmineTab.TabIndex = 3;
-            this.RedmineTab.Text = "Redmine";
-            this.RedmineTab.UseVisualStyleBackColor = true;
+            this.RedmineLabel.AutoSize = true;
+            this.RedmineLabel.Location = new System.Drawing.Point(7, 7);
+            this.RedmineLabel.Name = "RedmineLabel";
+            this.RedmineLabel.Size = new System.Drawing.Size(25, 12);
+            this.RedmineLabel.TabIndex = 0;
+            this.RedmineLabel.Text = "text";
             // 
-            // devtodoUrlLabel
+            // RedmineTextBox
             // 
-            this.devtodoUrlLabel.AutoSize = true;
-            this.devtodoUrlLabel.Location = new System.Drawing.Point(9, 270);
-            this.devtodoUrlLabel.Name = "devtodoUrlLabel";
-            this.devtodoUrlLabel.Size = new System.Drawing.Size(27, 12);
-            this.devtodoUrlLabel.TabIndex = 3;
-            this.devtodoUrlLabel.Text = "URL";
-            // 
-            // devtodoUserPassLabel
-            // 
-            this.devtodoUserPassLabel.AutoSize = true;
-            this.devtodoUserPassLabel.Location = new System.Drawing.Point(9, 293);
-            this.devtodoUserPassLabel.Name = "devtodoUserPassLabel";
-            this.devtodoUserPassLabel.Size = new System.Drawing.Size(51, 12);
-            this.devtodoUserPassLabel.TabIndex = 4;
-            this.devtodoUserPassLabel.Text = "userpass";
+            this.RedmineTextBox.Location = new System.Drawing.Point(522, 7);
+            this.RedmineTextBox.Multiline = true;
+            this.RedmineTextBox.Name = "RedmineTextBox";
+            this.RedmineTextBox.Size = new System.Drawing.Size(264, 165);
+            this.RedmineTextBox.TabIndex = 1;
             // 
             // MainWindow
             // 
@@ -354,6 +376,8 @@ namespace ak_win {
             this.LogViewerTab.PerformLayout();
             this.DevTodoTab.ResumeLayout(false);
             this.DevTodoTab.PerformLayout();
+            this.RedmineTab.ResumeLayout(false);
+            this.RedmineTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,6 +412,8 @@ namespace ak_win {
         private TabPage RedmineTab;
         private Label devtodoUrlLabel;
         private Label devtodoUserPassLabel;
+        private TextBox RedmineTextBox;
+        private Label RedmineLabel;
     }
 }
 
