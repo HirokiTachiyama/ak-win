@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="stDokuWikiConnector, Version=1.0.1.29425, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\stDokuWikiConnector.1.0.1.29425\lib\net40\stDokuWikiConnector.dll</HintPath>
@@ -134,7 +134,6 @@
     <Content Include="Doc\XMLTable\response-wiki_getRecentChanges.xml" />
     <Content Include="Doc\XMLTable\response-wiki_getRPCVersionSupported.xml" />
     <Content Include="Doc\XMLTable\response-wiki_putPage.xml" />
-    <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

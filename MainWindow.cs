@@ -29,6 +29,9 @@ namespace ak_win {
         // Todo 関連変数
         private string devTodo_status = "DevTodo";
 
+        // Redmine 関連変数
+        private string redmine_status = "Redmine";
+
         public MainWindow() {
             InitializeComponent();
 
@@ -36,14 +39,17 @@ namespace ak_win {
             string configFileStr = File.ReadAllText(configFile);
             conf = JsonConvert.DeserializeObject<Config>(configFileStr);
 
-            dpm = new DokuwikiPageManager(conf.url, conf.user, conf.pass);
-
             // デフォルトでチェックしておく
             Radio_LogKind_FormPDFMaker.Checked = true;
 
+            // DokuWikiへのログイン
+            dpm = new DokuwikiPageManager(conf.url, conf.user, conf.pass);
+            devtodoUrlLabel.Text = "URL : " + conf.url + conf.todoPage;
+            devtodoUserPassLabel.Text = "User : " + conf.user + ", Pass : ************";
+
             // DevTodoのテキスト読み込み
-            devTodoTextBox.Text = dpm.GetPage(conf.page);
-            devTodo_status = $"{conf.url}{conf.page} loaded.";
+            devTodoTextBox.Text = dpm.GetPageStr(conf.todoPage);
+            devTodo_status = $"{conf.url}{conf.todoPage} loaded.";
 
             // Timer_AK 始動
             this.Timer_AK.Start();
@@ -142,6 +148,11 @@ namespace ak_win {
                 case 2:
                     DevTodoTab_Selected();
                     break;
+                case 3:
+                    RedmineTab_Selected();
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -160,6 +171,12 @@ namespace ak_win {
             UpdateStatusLabel();
         }
 
+        private void RedmineTab_Selected() {
+            Console.WriteLine("Redmine");
+            UpdateStatusLabel();
+        }
+
+
         private void LogViewerTab_Area_Clicked(object sender, EventArgs e) {
             Console.WriteLine("logViewerTab clicked");
         }
@@ -170,21 +187,23 @@ namespace ak_win {
 
         private void DevTodoTab_Area_Clicked(object sender, EventArgs e) {
             Console.WriteLine("DevTodoTab clicked");
-
         }
 
         // ステータステキストのアップデート
         private void UpdateStatusLabel() {
-            // 選択されたタブに応じて分岐
-            switch (this.TabControl_AK.SelectedIndex) {
+            // 現在のタブに応じて分岐
+            switch (TabControl_AK.SelectedIndex) {
                 case 0: // LogViewer
-                    this.ToolStripStatusLabel_AK.Text = this.logViewer_status;
+                    ToolStripStatusLabel_AK.Text = logViewer_status;
                     break;
                 case 1: // Kifu
-                    this.ToolStripStatusLabel_AK.Text = this.kifu_status;
+                    ToolStripStatusLabel_AK.Text = kifu_status;
                     break;
                 case 2: // DevTodo
-                    this.ToolStripStatusLabel_AK.Text = this.devTodo_status;
+                    ToolStripStatusLabel_AK.Text = devTodo_status;
+                    break;
+                case 3: // Redmine
+                    ToolStripStatusLabel_AK.Text = redmine_status;
                     break;
                 default:
                     break;
@@ -208,9 +227,9 @@ namespace ak_win {
 
         private void devTodoLoadButton_Click(object sender, EventArgs e) {
             //devTodoTextBox.Text = File.ReadAllText(devTodo_file);
-
-            devTodoTextBox.Text = dpm.GetPage(conf.page);
-            devTodo_status = $"{conf.url}{conf.page} loaded.";
+            // Dokuwikiから取得
+            devTodoTextBox.Text = dpm.GetPageStr(conf.todoPage);
+            devTodo_status = $"{conf.url}{conf.todoPage} loaded.";
             UpdateStatusLabel();
         }
 
@@ -218,12 +237,10 @@ namespace ak_win {
             //File.WriteAllText(devTodo_file, devTodoTextBox.Text);
             //devTodo_status = $"{devTodo_file} saved.";
 
-
-            bool ret = dpm.PutPage(devTodoTextBox.Text, conf.page);
+            bool ret = dpm.PutPage(devTodoTextBox.Text, conf.todoPage);
 
             if (ret)
             {
-                Console.WriteLine("put success.");
                 devTodo_status = "put success.";
             } else
             {

@@ -45,11 +45,14 @@ namespace ak_win {
             this.LogViewerTab = new System.Windows.Forms.TabPage();
             this.KifuTab = new System.Windows.Forms.TabPage();
             this.DevTodoTab = new System.Windows.Forms.TabPage();
+            this.devTodoLoadButton = new System.Windows.Forms.Button();
             this.devTodoSaveButton = new System.Windows.Forms.Button();
             this.devTodoTextBox = new System.Windows.Forms.TextBox();
             this.Timer_AK = new System.Windows.Forms.Timer(this.components);
             this.Timer_AK_Label = new System.Windows.Forms.Label();
-            this.devTodoLoadButton = new System.Windows.Forms.Button();
+            this.RedmineTab = new System.Windows.Forms.TabPage();
+            this.devtodoUrlLabel = new System.Windows.Forms.Label();
+            this.devtodoUserPassLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.TabControl_AK.SuspendLayout();
@@ -154,7 +157,7 @@ namespace ak_win {
             // ToolStripMenuItem_SelectLogFormat
             // 
             this.ToolStripMenuItem_SelectLogFormat.Name = "ToolStripMenuItem_SelectLogFormat";
-            this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_SelectLogFormat.Size = new System.Drawing.Size(165, 22);
             this.ToolStripMenuItem_SelectLogFormat.Text = "ログフォーマット選択";
             this.ToolStripMenuItem_SelectLogFormat.Click += new System.EventHandler(this.ToolStripMenuItem_SelectLogFormat_Clicked);
             // 
@@ -170,14 +173,14 @@ namespace ak_win {
             // ToolStripMenuItem_Howtouse
             // 
             this.ToolStripMenuItem_Howtouse.Name = "ToolStripMenuItem_Howtouse";
-            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Howtouse.Size = new System.Drawing.Size(136, 22);
             this.ToolStripMenuItem_Howtouse.Text = "How To Use";
             this.ToolStripMenuItem_Howtouse.Click += new System.EventHandler(this.ToolStripMenuItem_Howtouse_Clicked);
             // 
             // ToolStripMenuItem_Version
             // 
             this.ToolStripMenuItem_Version.Name = "ToolStripMenuItem_Version";
-            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Version.Size = new System.Drawing.Size(136, 22);
             this.ToolStripMenuItem_Version.Text = "Version";
             this.ToolStripMenuItem_Version.Click += new System.EventHandler(this.ToolStripMenuItem_Version_Clicked);
             // 
@@ -207,6 +210,7 @@ namespace ak_win {
             this.TabControl_AK.Controls.Add(this.LogViewerTab);
             this.TabControl_AK.Controls.Add(this.KifuTab);
             this.TabControl_AK.Controls.Add(this.DevTodoTab);
+            this.TabControl_AK.Controls.Add(this.RedmineTab);
             this.TabControl_AK.Location = new System.Drawing.Point(0, 27);
             this.TabControl_AK.Name = "TabControl_AK";
             this.TabControl_AK.SelectedIndex = 0;
@@ -245,6 +249,8 @@ namespace ak_win {
             // 
             // DevTodoTab
             // 
+            this.DevTodoTab.Controls.Add(this.devtodoUserPassLabel);
+            this.DevTodoTab.Controls.Add(this.devtodoUrlLabel);
             this.DevTodoTab.Controls.Add(this.devTodoLoadButton);
             this.DevTodoTab.Controls.Add(this.devTodoSaveButton);
             this.DevTodoTab.Controls.Add(this.devTodoTextBox);
@@ -257,9 +263,19 @@ namespace ak_win {
             this.DevTodoTab.UseVisualStyleBackColor = true;
             this.DevTodoTab.Click += new System.EventHandler(this.DevTodoTab_Area_Clicked);
             // 
+            // devTodoLoadButton
+            // 
+            this.devTodoLoadButton.Location = new System.Drawing.Point(504, 6);
+            this.devTodoLoadButton.Name = "devTodoLoadButton";
+            this.devTodoLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.devTodoLoadButton.TabIndex = 2;
+            this.devTodoLoadButton.Text = "Load";
+            this.devTodoLoadButton.UseVisualStyleBackColor = true;
+            this.devTodoLoadButton.Click += new System.EventHandler(this.devTodoLoadButton_Click);
+            // 
             // devTodoSaveButton
             // 
-            this.devTodoSaveButton.Location = new System.Drawing.Point(423, 281);
+            this.devTodoSaveButton.Location = new System.Drawing.Point(504, 35);
             this.devTodoSaveButton.Name = "devTodoSaveButton";
             this.devTodoSaveButton.Size = new System.Drawing.Size(75, 23);
             this.devTodoSaveButton.TabIndex = 1;
@@ -289,15 +305,33 @@ namespace ak_win {
             this.Timer_AK_Label.TabIndex = 10;
             this.Timer_AK_Label.Text = "00:00:00";
             // 
-            // devTodoLoadButton
+            // RedmineTab
             // 
-            this.devTodoLoadButton.Location = new System.Drawing.Point(332, 281);
-            this.devTodoLoadButton.Name = "devTodoLoadButton";
-            this.devTodoLoadButton.Size = new System.Drawing.Size(75, 23);
-            this.devTodoLoadButton.TabIndex = 2;
-            this.devTodoLoadButton.Text = "Load";
-            this.devTodoLoadButton.UseVisualStyleBackColor = true;
-            this.devTodoLoadButton.Click += new System.EventHandler(this.devTodoLoadButton_Click);
+            this.RedmineTab.Location = new System.Drawing.Point(4, 22);
+            this.RedmineTab.Name = "RedmineTab";
+            this.RedmineTab.Padding = new System.Windows.Forms.Padding(3);
+            this.RedmineTab.Size = new System.Drawing.Size(792, 372);
+            this.RedmineTab.TabIndex = 3;
+            this.RedmineTab.Text = "Redmine";
+            this.RedmineTab.UseVisualStyleBackColor = true;
+            // 
+            // devtodoUrlLabel
+            // 
+            this.devtodoUrlLabel.AutoSize = true;
+            this.devtodoUrlLabel.Location = new System.Drawing.Point(9, 270);
+            this.devtodoUrlLabel.Name = "devtodoUrlLabel";
+            this.devtodoUrlLabel.Size = new System.Drawing.Size(27, 12);
+            this.devtodoUrlLabel.TabIndex = 3;
+            this.devtodoUrlLabel.Text = "URL";
+            // 
+            // devtodoUserPassLabel
+            // 
+            this.devtodoUserPassLabel.AutoSize = true;
+            this.devtodoUserPassLabel.Location = new System.Drawing.Point(9, 293);
+            this.devtodoUserPassLabel.Name = "devtodoUserPassLabel";
+            this.devtodoUserPassLabel.Size = new System.Drawing.Size(51, 12);
+            this.devtodoUserPassLabel.TabIndex = 4;
+            this.devtodoUserPassLabel.Text = "userpass";
             // 
             // MainWindow
             // 
@@ -351,6 +385,9 @@ namespace ak_win {
         private Timer Timer_AK;
         private Label Timer_AK_Label;
         private Button devTodoLoadButton;
+        private TabPage RedmineTab;
+        private Label devtodoUrlLabel;
+        private Label devtodoUserPassLabel;
     }
 }
 

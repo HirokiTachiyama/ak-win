@@ -20,6 +20,6 @@ namespace ak_win
         public string pass { get; set; }
 
         [JsonProperty("page")]
-        public string page { get; set; }
+        public string todoPage { get; set; }
     }
 }
