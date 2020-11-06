@@ -9,12 +9,14 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ak_win {
     public partial class MainWindow : Form {
+
 
         private string configFile = "../../config.json";
         private Config conf;
@@ -143,13 +145,13 @@ namespace ak_win {
             // 選択されたタブに応じて分岐
             switch (this.TabControl_AK.SelectedIndex) {
                 case 0:
-                    LogViewerTab_Selected();
+                    DevTodoTab_Selected();
                     break;
                 case 1:
                     KifuTab_Selected();
                     break;
                 case 2:
-                    DevTodoTab_Selected();
+                    LogViewerTab_Selected();
                     break;
                 case 3:
                     RedmineTab_Selected();
@@ -265,5 +267,18 @@ namespace ak_win {
             var issue = rm.GetObject<Issue>("18481", param);
             RedmineTextBox.Text = issue.ToString();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e) {
+
+        }
+
+        private void ShogiTab_KeyDown(object sender, KeyEventArgs e) {
+            shogi_testlabel.Text = e.KeyCode.ToString();
+        }
+
     }
 }
