@@ -1,5 +1,6 @@
-﻿language: csharp
+﻿notifications:
+  slack: solospacegroup:EaeFfH7lH2Cutls2Li4d2ioo
+
+language: csharp
 solution: ak-win.sln
 
-notifications:
-  slack: solospacegroup:EaeFfH7lH2Cutls2Li4d2ioo
