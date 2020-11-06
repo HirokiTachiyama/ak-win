@@ -51,11 +51,11 @@ namespace ak_win {
             this.devTodoSaveButton = new System.Windows.Forms.Button();
             this.devTodoTextBox = new System.Windows.Forms.TextBox();
             this.RedmineTab = new System.Windows.Forms.TabPage();
+            this.redmineButton = new System.Windows.Forms.Button();
             this.RedmineTextBox = new System.Windows.Forms.TextBox();
             this.RedmineLabel = new System.Windows.Forms.Label();
             this.Timer_AK = new System.Windows.Forms.Timer(this.components);
             this.Timer_AK_Label = new System.Windows.Forms.Label();
-            this.redmineButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.TabControl_AK.SuspendLayout();
@@ -327,6 +327,16 @@ namespace ak_win {
             this.RedmineTab.Text = "Redmine";
             this.RedmineTab.UseVisualStyleBackColor = true;
             // 
+            // redmineButton
+            // 
+            this.redmineButton.Location = new System.Drawing.Point(9, 34);
+            this.redmineButton.Name = "redmineButton";
+            this.redmineButton.Size = new System.Drawing.Size(75, 23);
+            this.redmineButton.TabIndex = 2;
+            this.redmineButton.Text = "connect";
+            this.redmineButton.UseVisualStyleBackColor = true;
+            this.redmineButton.Click += new System.EventHandler(this.redmineButton_Click);
+            // 
             // RedmineTextBox
             // 
             this.RedmineTextBox.Location = new System.Drawing.Point(522, 7);
@@ -356,16 +366,6 @@ namespace ak_win {
             this.Timer_AK_Label.Size = new System.Drawing.Size(45, 12);
             this.Timer_AK_Label.TabIndex = 10;
             this.Timer_AK_Label.Text = "00:00:00";
-            // 
-            // redmineButton
-            // 
-            this.redmineButton.Location = new System.Drawing.Point(9, 34);
-            this.redmineButton.Name = "redmineButton";
-            this.redmineButton.Size = new System.Drawing.Size(75, 23);
-            this.redmineButton.TabIndex = 2;
-            this.redmineButton.Text = "do";
-            this.redmineButton.UseVisualStyleBackColor = true;
-            this.redmineButton.Click += new System.EventHandler(this.redmineButton_Click);
             // 
             // MainWindow
             // 
