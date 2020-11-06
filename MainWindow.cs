@@ -177,11 +177,7 @@ namespace ak_win {
         private void RedmineTab_Selected() {
             Console.WriteLine("Redmine");
 
-            var rm = new RedmineManager(conf.redmineUrl, conf.redmineApiKey);
-            var param = new NameValueCollection { { "status_id", "*" } };
 
-            var issue = rm.GetObject<Issue>("18481", param);
-            RedmineTextBox.Text = issue.ToString();
 
             UpdateStatusLabel();
         }
@@ -257,6 +253,17 @@ namespace ak_win {
                 devTodo_status = "put failed.";
             }
             UpdateStatusLabel();
+        }
+
+        private void redmineButton_Click(object sender, EventArgs e) {
+
+            // うごかない
+
+            var rm = new RedmineManager(conf.redmineUrl, conf.redmineApiKey);
+            var param = new NameValueCollection { { "status_id", "*" } };
+
+            var issue = rm.GetObject<Issue>("18481", param);
+            RedmineTextBox.Text = issue.ToString();
         }
     }
 }

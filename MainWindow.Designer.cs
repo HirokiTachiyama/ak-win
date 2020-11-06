@@ -51,10 +51,11 @@ namespace ak_win {
             this.devTodoSaveButton = new System.Windows.Forms.Button();
             this.devTodoTextBox = new System.Windows.Forms.TextBox();
             this.RedmineTab = new System.Windows.Forms.TabPage();
+            this.RedmineTextBox = new System.Windows.Forms.TextBox();
+            this.RedmineLabel = new System.Windows.Forms.Label();
             this.Timer_AK = new System.Windows.Forms.Timer(this.components);
             this.Timer_AK_Label = new System.Windows.Forms.Label();
-            this.RedmineLabel = new System.Windows.Forms.Label();
-            this.RedmineTextBox = new System.Windows.Forms.TextBox();
+            this.redmineButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.TabControl_AK.SuspendLayout();
@@ -315,6 +316,7 @@ namespace ak_win {
             // 
             // RedmineTab
             // 
+            this.RedmineTab.Controls.Add(this.redmineButton);
             this.RedmineTab.Controls.Add(this.RedmineTextBox);
             this.RedmineTab.Controls.Add(this.RedmineLabel);
             this.RedmineTab.Location = new System.Drawing.Point(4, 22);
@@ -324,6 +326,23 @@ namespace ak_win {
             this.RedmineTab.TabIndex = 3;
             this.RedmineTab.Text = "Redmine";
             this.RedmineTab.UseVisualStyleBackColor = true;
+            // 
+            // RedmineTextBox
+            // 
+            this.RedmineTextBox.Location = new System.Drawing.Point(522, 7);
+            this.RedmineTextBox.Multiline = true;
+            this.RedmineTextBox.Name = "RedmineTextBox";
+            this.RedmineTextBox.Size = new System.Drawing.Size(264, 165);
+            this.RedmineTextBox.TabIndex = 1;
+            // 
+            // RedmineLabel
+            // 
+            this.RedmineLabel.AutoSize = true;
+            this.RedmineLabel.Location = new System.Drawing.Point(7, 7);
+            this.RedmineLabel.Name = "RedmineLabel";
+            this.RedmineLabel.Size = new System.Drawing.Size(25, 12);
+            this.RedmineLabel.TabIndex = 0;
+            this.RedmineLabel.Text = "text";
             // 
             // Timer_AK
             // 
@@ -338,22 +357,15 @@ namespace ak_win {
             this.Timer_AK_Label.TabIndex = 10;
             this.Timer_AK_Label.Text = "00:00:00";
             // 
-            // RedmineLabel
+            // redmineButton
             // 
-            this.RedmineLabel.AutoSize = true;
-            this.RedmineLabel.Location = new System.Drawing.Point(7, 7);
-            this.RedmineLabel.Name = "RedmineLabel";
-            this.RedmineLabel.Size = new System.Drawing.Size(25, 12);
-            this.RedmineLabel.TabIndex = 0;
-            this.RedmineLabel.Text = "text";
-            // 
-            // RedmineTextBox
-            // 
-            this.RedmineTextBox.Location = new System.Drawing.Point(522, 7);
-            this.RedmineTextBox.Multiline = true;
-            this.RedmineTextBox.Name = "RedmineTextBox";
-            this.RedmineTextBox.Size = new System.Drawing.Size(264, 165);
-            this.RedmineTextBox.TabIndex = 1;
+            this.redmineButton.Location = new System.Drawing.Point(9, 34);
+            this.redmineButton.Name = "redmineButton";
+            this.redmineButton.Size = new System.Drawing.Size(75, 23);
+            this.redmineButton.TabIndex = 2;
+            this.redmineButton.Text = "do";
+            this.redmineButton.UseVisualStyleBackColor = true;
+            this.redmineButton.Click += new System.EventHandler(this.redmineButton_Click);
             // 
             // MainWindow
             // 
@@ -414,6 +426,7 @@ namespace ak_win {
         private Label devtodoUserPassLabel;
         private TextBox RedmineTextBox;
         private Label RedmineLabel;
+        private Button redmineButton;
     }
 }
 
